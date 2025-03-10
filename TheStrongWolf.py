@@ -243,7 +243,7 @@ class BYPASS:
 
     def reCAPTCHA(self, sitekey):
         with requests.Session() as r:
-            self.key = json.loads(open('TheStrongWolf/Key.json', 'r').read())['MULTI-BOT'] # PLEASE CHANGE IT WITH THE KEY YOU HAVE!
+            self.key = json.loads(open('Penyimpanan/Key.json', 'r').read())['MULTI-BOT'] # PLEASE CHANGE IT WITH THE KEY YOU HAVE!
             response = r.get(f'http://api.multibot.in/in.php?key={self.key}&method=userrecaptcha&googlekey={sitekey}&pageurl=https://dj.yogram.net/autolike.php?type=custom')
             if 'ERROR_ZERO_BALANCE' not in str(response.text):
                 self.status, self.id = str(response.text).split('|')[0], str(response.text).split('|')[1]
@@ -273,10 +273,10 @@ class BYPASS:
 
 if __name__ == '__main__':
     try:
-        if os.path.exists("TheStrongWolf/Youtube.json") == False:
-            youtube_url = json.loads(requests.get('https://raw.githubusercontent.com/TheStrongWolf/main/TheStrongWolf/Subscribe.json').text)['Link']
+        if os.path.exists("Penyimpanan/Youtube.json") == False:
+            youtube_url = json.loads(requests.get('https://raw.githubusercontent.com/RozhakXD/TangLike/main/Penyimpanan/Subscribe.json').text)['Link']
             os.system(f'xdg-open {youtube_url}')
-            with open('TheStrongWolf/Youtube.json', 'w') as w:
+            with open('Penyimpanan/Youtube.json', 'w') as w:
                 w.write(json.dumps({
                     "Status": True
                 }))
