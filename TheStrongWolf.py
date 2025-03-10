@@ -35,7 +35,7 @@ if __name__ == "__main__":
 try:
     from requests.exceptions import RequestException
     from rich.console import Console
-    import requests, re, time, os, json 
+    import requests, re, time, os, json
     from rich.panel import Panel
     from rich import print as printf
 except (ModuleNotFoundError) as e:
@@ -222,8 +222,8 @@ class DJ_LIKER:
 
 def TAMPILKAN_BANNER():
     os.system('cls' if os.name == 'nt' else 'clear')
-    printf(Panel("""
- _____ _          ____  _                       __        __    _  __ 
+    printf(Panel("""[bold red]
+	 _____ _          ____  _                       __        __    _  __ 
 |_   _| |__   ___/ ___|| |_ _ __ ___  _ __   __ \ \      / /__ | |/ _|
   | | | '_ \ / _ \___ \| __| '__/ _ \| '_ \ / _` \ \ /\ / / _ \| | |_ 
   | | | | | |  __/___) | |_| | | (_) | | | | (_| |\ V  V / (_) | |  _|
@@ -233,7 +233,8 @@ def TAMPILKAN_BANNER():
 { DJ-LIKER SCRIPY - BY ( TheStrongWolf ) { thestrongwolf.rf.gd }   
                      EGYPY THE BEST FOREVER 
                      REVERSE ENGINNER ARAB
-                     BLACK HAT EGYPT """, width=59, style="bold bright_white"))
+                     BLACK HAT EGYPT
+	""", width=59, style="bold bright_white"))
 
 class BYPASS:
 
@@ -242,7 +243,7 @@ class BYPASS:
 
     def reCAPTCHA(self, sitekey):
         with requests.Session() as r:
-            self.key = json.loads(open('TheStrongWolf/Key.json', 'r').read())['MULTI-BOT'] # PLEASE CHANGE IT WITH THE KEY YOU HAVE!
+            self.key = json.loads(open('Penyimpanan/Key.json', 'r').read())['MULTI-BOT'] # PLEASE CHANGE IT WITH THE KEY YOU HAVE!
             response = r.get(f'http://api.multibot.in/in.php?key={self.key}&method=userrecaptcha&googlekey={sitekey}&pageurl=https://dj.yogram.net/autolike.php?type=custom')
             if 'ERROR_ZERO_BALANCE' not in str(response.text):
                 self.status, self.id = str(response.text).split('|')[0], str(response.text).split('|')[1]
@@ -272,10 +273,10 @@ class BYPASS:
 
 if __name__ == '__main__':
     try:
-        if os.path.exists("TheStrongWolf/Youtube.json") == False:
-            youtube_url = json.loads(requests.get('https://raw.githubusercontent.com/TheStrongWolf/DJ-LIKER/main/TheStrongWolf/Subscribe.json').text)['Link']
+        if os.path.exists("Penyimpanan/Youtube.json") == False:
+            youtube_url = json.loads(requests.get('https://raw.githubusercontent.com/RozhakXD/TangLike/main/Penyimpanan/Subscribe.json').text)['Link']
             os.system(f'xdg-open {youtube_url}')
-            with open('TheStrongWolf/Youtube.json', 'w') as w:
+            with open('Penyimpanan/Youtube.json', 'w') as w:
                 w.write(json.dumps({
                     "Status": True
                 }))
@@ -288,4 +289,3 @@ if __name__ == '__main__':
         exit()
     except (KeyboardInterrupt):
         exit()
-        
